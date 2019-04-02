@@ -1,23 +1,23 @@
 1:以容易理解的格式列出/home 目录中所有以”d”开头的文件目录的大小
-ls -l d*
+find ~ -name 'r*' -exec ls -lh {} \;
 
-2：列出/home 目录中所有以”s”开头的目录。
-暂时没找到过滤目录文件的方法
+2：列出/home 目录中所有以”s”开头的目录
+find ~ -name 's*' -type d -exec ls -lh {} \;
 
 3:删除后缀名为.log 的所有，删除前逐一询问
-Rm -I *.log
+find ~ -name '*.log' -exec rm -ri {} \;
 
 4:cp 命令 —n 和 -u的区别
 了解
 
 5：找你的用户目录下面的所有py文件,ls -l 查看他们的属性,然后把这些结果输入到一个文件之中
-ls -l *.py > aaa
+find ~ -name '*.py' -type f -exec ls -l {} \; > res.txt
 
 6:使用ls查看根目录 并且每行显示3个信息
 ls / | xargs -n 3
 
 7:查看所有进程信息,只查看前3行
-top|head -n 3
+ps -ef|head -n 3
 
 8:分析以下问题,并给出解决方案
 

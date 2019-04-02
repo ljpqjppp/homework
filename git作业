@@ -9,7 +9,7 @@ git rm -f 忽略更新状态检查 强制删除
 区别：
 
 4、筛选出 2018.10.1 到 2018.10.20之间的日志,并且输出为地理图,并且没有做过合并
-admin$ git log --graph --since='2018.10.20' --after='2018.10.1'
+git log --since=2018-10-1 --before=2018-10-20 --no-merges --graph
 
 5、git init和git clone的区别
 git init是在一个项目文件夹里启动git进行管理
