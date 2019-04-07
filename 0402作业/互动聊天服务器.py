@@ -3,30 +3,32 @@
 import socket
 from threading import Thread
 
-def conns(conn, conn_addr):
-    while 1:
-        try:
-            msg = conn.recv(65535)
-            if not msg:
-                break
-            msg = msg.decode()
-            print('客户端说{}'.format(msg))
-            msg = str(input('服务器说：'))
-            conn.send(msg.encode())
-        except Exception:
-            break
+conn_lists = list()
 
-server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_addr = ('127.0.0.1', 41903)
-server.bind(server_addr)
-print('服务器已经开启')
-server.listen(10)
-while 1:
-    try:
-        conn, conn_addr = server.accept()
-    except Exception:
-        break
-    t1 = Thread(target=conns, args=(conn, conn_addr))
-    t1.start()
-server.close()
-print('服务器已经结束')
+
+def handle_conn(conn, addr):
+    while 1:
+        msg = conn.recv(65535)
+        return_msg = '地址在{}的用户说:{}'.format(addr, msg.decode())
+        for conn in conn_lists:
+            conn.send(return_msg.encode())
+
+
+def conn_server(addr):
+    ss = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    ss.bind(addr)
+    ss.listen()
+    print('服务器已经启动')
+    # 会阻塞 等待链接进来
+    
+    while 1:
+        conn, addr = ss.accept()
+        conn_lists.append(conn)
+        print('新来链接,地址{}'.format(addr))
+        handle = Thread(target=handle_conn, args=(conn, addr))
+        handle.start()
+
+
+if __name__ == "__main__":
+    addr = ("127.0.0.1", 9520)
+    conn_server(addr)
