@@ -1,4 +1,4 @@
-﻿1、git add和git stage的区别是什么
+1、git add和git stage的区别是什么
 除了命令输入 功能上没有区别
 
 2、git rm --cached 和git rm -f的区别是什么
