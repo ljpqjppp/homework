@@ -1,0 +1,159 @@
+A:
+3.select * from student;
+
+4.select * from student limit 1,3;
+
+5.select id,name,department from student;
+
+6.select * from student where department = '计算机' or department = '英语';
+
+7.select * from student where (2019-birth)>17 and (2019-birth)<23;
+
+8.select department,count(department) as '人数' from student group by department; 
+
+10.select student.name,score.c_name as '课程',score.grade as '成绩' from student join score where student.id=score.stu_id and student.name = '李四';
+ 
+11.select st.name,st.sex,st.birth,st.department,st.address,sc.c_name,sc.grade from student as st join score as sc where st.id=sc.stu_id;
+
+12.select st.name,sum(sc.grade) as '总成绩' from student as st join score as sc where st.id = sc.stu_id group by st.name;
+
+13.select sc.c_name,avg(sc.grade) as '平均成绩' from student as st join score as sc where st.id = sc.stu_id group by sc.c_name; 
+
+14.select st.* from student as st join score as sc where st.id=sc.stu_id and sc.grade<95 and sc.c_name = '计算机';
+
+15.select a.* from student as a,score as b,score as c where a.id = b.stu_id and b.c_name='计算机' and a.id = c.stu_id and c.c_name='英语'
+
+16.select st.id,st.name,sc.c_name,sc.grade from student as st join score as sc where st.id=sc.stu_id and sc.c_name='计算机' order by sc.grade desc; 
+
+17.select * from student as st join score as sc where st.id = sc.stu_id and (st.name like '张%' or st.name like '王%');
+
+18.select * from student as st join score as sc where st.id = sc.stu_id and st.address='湖南';
+
+19.update student as st set st.name='张三丰' where st.name='张三';
+update student st,score sc set sc.c_name='java',sc.grade=100 where st.id=sc.stu_id and st.name='张三丰' and sc.c_name='python';
+
+
+B:
+1.select * from employee em where em.age>20;
+
+2.select * from employee em where em.age<25 and em.sex='女';
+
+3.select em.sex,count(sex) from employee as em group by em.sex;
+
+4.select * from employee em order by em.age desc; 
+
+5.select name,count(*) as con from employee em group by name having con>1;
+
+6.select * from employee en where en.name like '张%'; 
+
+7.select * from employee en where en.address='北京' limit 0,3;
+
+8.select count(*) from employee;
+
+9.insert into `employee` values('孙悟空','男',22,'花果山');
+
+10.update `employee` as em set em.address='南京' where em.name='张四';
+
+11.delete from  `employee`  where age >24 and sex='女';
+
+C:
+
+1.select y_name,y_address from yg where y_age between 25 and 30 and y_sex='男';
+
+2.select * from yg where y_sex='男' and b_id=(select b_id from bumen where b_name='财务部');
+
+3.select y_name,MAX(y_age) from yg where y_sex='女' and b_id=(select b_id from bumen where b_name='人事部') group by y_name； ！！！！！！！！！！！！！！！！
+
+4.insert into yg (y_name,y_sex,y_age) values ('王明','男',22);
+
+5.update yg set b_id=(select b_id from bumen where b_name='后勤部') where y_sex='女' and y_age>30;
+
+6.select bumen.b_name,max(yg.y_age) from yg join bumen where yg.b_id=bumen.b_id group by bumen.b_name;
+
+7.select bumen.b_name,count(*) as co from yg join bumen where yg.b_id=bumen.b_id group by bumen.b_id order by co desc,bumen.b_id;
+
+8.update yg set y_name ='李四',b_id = (select b_id from bumen where b_name ='财务部') where y_name='张三';
+
+9.delete from yg where y_age >60 and b_id=(select b_id from bumen where b_name='后勤部');
+
+10.select * from yg where y_age not between 20 and 30 and y_sex='男' and b_id=(select b_id from bumen where b_name='财务部');  
+
+
+D:
+
+1.select sname,age from s where age<20;
+
+2.select sno from sc where grade <60;
+
+3.select name,sdept,age from s where age between 20 and 23;
+
+4.select sname,sex from s where sdept='计算机' or sdept='	数学' or sdept='信息';
+
+5.select sname,sex from s where sdept not in ('计算机''数学''信息')；
+
+6.select sname,sno,sex from s where sname like '刘%';
+
+7.select sname from s where sname like '上官_';
+
+8.select sname from s where sname not like '张%';
+
+9.select cno from c where cname='DB_Design';
+
+10.select sno,cno from sc where grade is null;
+
+11.select sno,sname from s where age is null;
+
+12.select sno,sname from s where age<20 and sdept='计算机';
+
+13.select sname,sex from s where sdept in ('计算机','数学','信息');
+
+14.select sno,grade from sc where cno='c3' order by grade desc; 
+
+15.select * from s order by sdept order by age desc;
+
+16.select count(*) from s;
+
+17.select count(distinct sno) from sc;
+
+18.select avg(grade) from sc where cno='c1';
+
+19.select max(grade) from sc where cno='c3';
+
+20.select cno,count(sno) from sc group by cno;
+
+21.select s.sno from s join sc where s.sno=sc.sno and s.sdept='计算机' having count(*)>3;
+
+22.select age,count(sno) from s group by age having count(*)>50;
+
+23.select s.*,sc.* from s,sc where s.sno=sc.sno;
+
+24.select s.* from s,sc where s.sno=sc.sno and sc.cno='c2' and sc.grade>90;
+
+25.select s.sno,s.sname,c.cname,sc.grade from s,sc,c where s.sno=sc.sno and sc.cno=c.cno;
+
+26.select s.age,count(distinct s.sno) from s,sc where s,sno=sc.sno order by s.age;
+
+27.select s.sname from s,sc where s.sno=sc.sno and sc.cno='c2';
+
+28.select sno,sname,sdept where sdeot=(select sdept from s where sname='张三');
+
+29.select s.sno,s.sname from s,sc,c where s.sno=sc.sno and sc.cno=c.cno and c.cname='数据库';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
