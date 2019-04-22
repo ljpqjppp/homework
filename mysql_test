@@ -1,0 +1,13 @@
+1. 找出连续的座位号
+select t1.teat_id as seat_id from train as t1 left join train as t2 on t1.teat_id=t2.teat_id-1 where t1.is_free=1 and(t2.is_free is null or t2.is_free =1);
+
+2. 找出员工奖金(bonus)少于1000的员工名和奖金数额
+select e.name,b.bonus from employee as e left join bonus as b on e.empid=b.empid where b.bonus<1000 or b.bonus is null;
+
+3.找出没有销售给RED公司的订单的人
+select name from salesperson where sales_id not in (select sales_id from `order` where com_id=(select com_id from company where name='red'));
+
+4.找出节点的类型
+
+5.5.赢得投票的人
+select name from candidate where id =(select candidateid as id from vote group by candidateid limit 0,1 ) ;
