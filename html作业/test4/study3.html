@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+        margin:0;
+        }
+        .u2  li{
+            border:1px solid red;
+            width:200px;
+            height:60px;
+            margin-bottom:1px;
+            list-style-type:none;
+            line-height:60px;
+            text-align:center;
+            background:#666;
+            font-size:20px;
+        }
+            li:hover {
+                background:red;
+
+            }
+            .u3,.u4{
+                display:none;
+            }
+        .gg:hover + .u3{
+            display:block;
+        }
+
+        .g1:hover + u4{
+            display:block;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+                <ul class="u2">
+                    <li class="gg">章节</li>
+                        <ul class="u3">
+                            <li class="g1">python</li>
+                                <ul class="u4">
+                                    <li class="g1">GUI</li>
+                                    <li class="g1">SOCKET</li>
+                                    <li class="g1">ASYNC</li>
+                                </ul>
+                            <li class="g1">go</li>
+                        </ul>
+                    <li>问答</li>
+                    <li>笔记</li>
+                    <li>提问</li>
+
+                </ul>
+
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+        text-align:center;
+        font-style:14px;
+        }
+        .gg{
+        display:inline-block;
+        }
+    </style>
+</head>
+<body>
+<div >
+    <form>
+        <p>账号：<input type="text" value placeholder="请输入账号">（必填）</p>
+        <p>密码：<input type="text" placeholder="请输入密码">（必填）</p>
+        <p>性别：
+        保密<input type="radio" name="sex" checked="checked">
+        男<input type="radio" name="sex" >
+        女<input type="radio" name="sex" >（选填）</p>
+        <p>邮箱：<input type="text" value placeholder="请输入邮箱">（选填）</p>
+        <p>电话：<input type="text" value placeholder="请输入电话">（选填）</p>
+        <p><select>
+            <option>互联网/电子商务</option>
+            <option>卖烧饼/馒头</option>
+            <option>水果/蔬菜</option>
+            <option>1/2</option>
+            <option>3/4444444444444444444</option>
+        </select></p>
+        <p><input type="text" value="重庆" ></p>
+        <p>
+            <textarea style="height:80px; width:340px;" maxlength="120" placeholder="请输入您的简要签名，不能超过120字符"></textarea>
+        </p>
+
+        <p>
+            <fieldset style="width:380px; height:50px; float: none; margin:0 auto">
+                <legend>健康信息</legend>
+                身高: <input type="text" >
+                体重: <input type="text" >
+            </fieldset>
+        </p>
+        <div>
+             <hr class="gg" style="width:40%;">兴趣爱好<hr class="gg" style="width:40%">
+                 <p>
+                 游泳<input type="checkbox" name="vehicle[]" value="Bike">
+                 唱歌<input type="checkbox" name="vehicle[]" value="Car" checked="checked">
+                 摄影<input type="checkbox" name="vehicle[]" value="Bike">
+                 运动<input type="checkbox" name="vehicle[]" value="Car" checked="checked">
+                 游戏<input type="checkbox" name="vehicle[]" value="Bike">
+                 撸代码<input type="checkbox" name="vehicle[]" value="Car" checked="checked">
+                 </p>
+             <hr width="85%">
+        </div>
+        <p>
+            <input type="submit" value="注册">&nbsp;&nbsp;<input type="submit" value="取消">
+        </p>
+    </form>
+</div>
+
+</body>
+</html>
